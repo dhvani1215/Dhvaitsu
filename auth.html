@@ -1,0 +1,1147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dhvtisu - Login & Sign Up</title>
+
+  <!-- 
+    - favicon
+  -->
+  <link rel="shortcut icon" href="./favicon.svg" type="image/svg+xml">
+
+  <!-- 
+    - custom css link
+  -->
+  <link rel="stylesheet" href="./assets/css/style.css">
+    <style>
+        /* Auth Form Styles */
+.auth-section {
+    padding-block: var(--section-padding);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    background-color: var(--ghost-white);
+  }
+  
+  .auth-container {
+    max-width: 500px;
+    margin-inline: auto;
+    padding: 50px 30px;
+    background-color: var(--white);
+    border-radius: var(--radius-20);
+    box-shadow: var(--shadow-1);
+    animation: fadeInUp 0.8s ease forwards;
+    opacity: 0;
+    transform: translateY(30px);
+    overflow: hidden;
+  }
+  
+  .auth-header {
+    text-align: center;
+    margin-block-end: 40px;
+  }
+  
+  .auth-header .logo {
+    display: inline-block;
+    margin-block-end: 20px;
+    font-size: 3rem;
+  }
+  
+  .auth-title {
+    color: var(--raisin-black-1);
+    font-size: var(--fs-3);
+    font-weight: var(--fw-700);
+    margin-block-end: 10px;
+  }
+  
+  .auth-subtitle {
+    color: var(--cool-gray);
+    font-size: var(--fs-7);
+  }
+  
+  /* Tab Styles */
+  .auth-tabs {
+    display: flex;
+    margin-block-end: 30px;
+    border-bottom: 1px solid var(--gainsboro);
+  }
+  
+  .tab-btn {
+    flex: 1;
+    padding: 15px;
+    text-align: center;
+    color: var(--cool-gray);
+    font-weight: var(--fw-500);
+    font-size: var(--fs-7);
+    position: relative;
+    transition: var(--transition-1);
+    cursor: pointer;
+  }
+  
+  .tab-btn.active {
+    color: var(--majorelle-blue);
+  }
+  
+  .tab-btn::after {
+    content: "";
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background-color: var(--majorelle-blue);
+    transform: scaleX(0);
+    transition: var(--transition-1);
+  }
+  
+  .tab-btn.active::after {
+    transform: scaleX(1);
+  }
+  
+  .tab-content {
+    display: none;
+  }
+  
+  .tab-content.active {
+    display: block;
+    animation: fadeIn 0.5s ease forwards;
+  }
+  
+  .auth-form .input-wrapper {
+    margin-block-end: 20px;
+  }
+  
+  .auth-form .input-row {
+    display: grid;
+    gap: 20px;
+  }
+  
+  .auth-form .label {
+    color: var(--raisin-black-1);
+    font-size: var(--fs-8);
+    font-weight: var(--fw-500);
+    margin-block-end: 10px;
+  }
+  
+  .auth-form .input-field {
+    background-color: var(--ghost-white);
+    color: var(--raisin-black-1);
+    font-size: var(--fs-9);
+    padding: 15px;
+    border-radius: var(--radius-8);
+    outline: none;
+    transition: all var(--transition-1);
+    border: 1px solid transparent;
+  }
+  
+  .auth-form .input-field:focus {
+    border-color: var(--majorelle-blue);
+    box-shadow: 0 0 0 3px rgba(var(--majorelle-blue-rgb), 0.1);
+  }
+  
+  .auth-form .input-field::placeholder {
+    color: var(--cool-gray);
+  }
+  
+  .auth-form .password-wrapper {
+    position: relative;
+  }
+  
+  .auth-form .password-toggle {
+    position: absolute;
+    top: 50%;
+    right: 15px;
+    transform: translateY(-50%);
+    color: var(--cool-gray);
+    font-size: 18px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    transition: color var(--transition-1);
+  }
+  
+  .auth-form .password-toggle:hover {
+    color: var(--raisin-black-1);
+  }
+  
+  .auth-form .forgot-password {
+    display: inline-block;
+    color: var(--majorelle-blue);
+    font-size: var(--fs-9);
+    font-weight: var(--fw-500);
+    margin-block-start: 10px;
+    transition: color var(--transition-1);
+  }
+  
+  .auth-form .forgot-password:hover {
+    text-decoration: underline;
+  }
+  
+  .auth-form .checkbox-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-block: 15px;
+  }
+  
+  .auth-form .checkbox-label {
+    color: var(--cool-gray);
+    font-size: var(--fs-9);
+    cursor: pointer;
+  }
+  
+  .auth-form .checkbox-label a {
+    color: var(--majorelle-blue);
+    font-weight: var(--fw-500);
+    transition: color var(--transition-1);
+  }
+  
+  .auth-form .checkbox-label a:hover {
+    text-decoration: underline;
+  }
+  
+  .auth-form .btn {
+    width: 100%;
+    margin-block: 30px 20px;
+  }
+  
+  .auth-form .divider {
+    position: relative;
+    text-align: center;
+    margin-block: 30px;
+  }
+  
+  .auth-form .divider::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background-color: var(--gainsboro);
+    z-index: -1;
+  }
+  
+  .auth-form .divider-text {
+    display: inline-block;
+    background-color: var(--white);
+    color: var(--cool-gray);
+    font-size: var(--fs-9);
+    padding-inline: 10px;
+  }
+  
+  .social-login-btns {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+  }
+  
+  .social-login-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background-color: var(--ghost-white);
+    color: var(--raisin-black-1);
+    font-size: 20px;
+    transition: all var(--transition-1);
+  }
+  
+  .social-login-btn:hover {
+    background-color: var(--majorelle-blue);
+    color: var(--white);
+    transform: translateY(-5px);
+  }
+  
+  /* Password strength indicator */
+  .password-strength {
+    display: flex;
+    margin-top: 10px;
+    gap: 5px;
+  }
+  
+  .strength-bar {
+    height: 4px;
+    flex: 1;
+    background-color: var(--gainsboro);
+    border-radius: 2px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .strength-text {
+    font-size: var(--fs-9);
+    color: var(--cool-gray);
+    margin-top: 5px;
+  }
+  
+  /* Animation keyframes */
+  @keyframes fadeInUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  @keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+    20%, 40%, 60%, 80% { transform: translateX(5px); }
+  }
+  
+  .shake {
+    animation: shake 0.5s ease;
+  }
+  
+  .input-error {
+    border-color: var(--bittersweet) !important;
+  }
+  
+  .error-message {
+    color: var(--bittersweet);
+    font-size: var(--fs-9);
+    margin-top: 5px;
+    display: none;
+  }
+  
+  .show-error .error-message {
+    display: block;
+  }
+  
+  /* Media queries */
+  @media (min-width: 576px) {
+    .auth-form .input-row {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+    </style>
+
+  <!-- 
+    - google font link
+  -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+
+<body id="top">
+
+  <!-- 
+    - #HEADER
+  -->
+
+  <header class="header" data-header>
+    <div class="container">
+
+      <a href="index.html" class="logo">Dhvtisu</a>
+
+      <nav class="navbar" data-navbar>
+
+        <div class="wrapper">
+          <a href="index.html" class="logo">Dhvtisu</a>
+
+          <button class="nav-close-btn" aria-label="close menu" data-nav-toggler>
+            <ion-icon name="close-outline" aria-hidden="true"></ion-icon>
+          </button>
+        </div>
+
+        <ul class="navbar-list">
+
+          <li class="navbar-item">
+            <a href="index.html" class="navbar-link" data-nav-link>Home</a>
+          </li>
+
+          <li class="navbar-item">
+            <a href="index.html#service" class="navbar-link" data-nav-link>Services</a>
+          </li>
+
+          <li class="navbar-item">
+            <a href="index.html#feature" class="navbar-link" data-nav-link>Features</a>
+          </li>
+
+          <li class="navbar-item">
+            <a href="index.html#project" class="navbar-link" data-nav-link>Portfolio</a>
+          </li>
+
+          <li class="navbar-item">
+            <a href="index.html#blog" class="navbar-link" data-nav-link>Blog</a>
+          </li>
+
+          <li class="navbar-item">
+            <a href="contact.html" class="navbar-link" data-nav-link>Contact</a>
+          </li>
+
+          <li class="navbar-item">
+            <a href="auth.html" class="navbar-link" data-nav-link>Login / Sign Up</a>
+          </li>
+
+        </ul>
+
+      </nav>
+
+      <button class="nav-open-btn" aria-label="open menu" data-nav-toggler>
+        <ion-icon name="menu-outline" aria-hidden="true"></ion-icon>
+      </button>
+
+      <a href="contact.html" class="btn btn-primary has-before has-after">Let's Talk 👋</a>
+
+      <div class="overlay" data-nav-toggler data-overlay></div>
+
+    </div>
+  </header>
+
+  <main>
+    <article>
+
+      <!-- 
+        - #AUTH SECTION
+      -->
+
+      <section class="section auth-section" aria-label="authentication">
+        <div class="container">
+
+          <div class="auth-container">
+            <div class="auth-header">
+              <a href="index.html" class="logo">Dhvtisu</a>
+              <h1 class="auth-title">Welcome to Dhvtisu</h1>
+              <p class="auth-subtitle">Login or create an account to get started</p>
+            </div>
+
+            <div class="auth-tabs">
+              <button class="tab-btn active" data-tab="login">Login</button>
+              <button class="tab-btn" data-tab="signup">Sign Up</button>
+            </div>
+
+            <!-- Login Form -->
+            <div class="tab-content active" id="login-tab">
+              <form action="#" class="auth-form" id="loginForm">
+                <div class="input-wrapper">
+                  <label for="login-email" class="label">Email Address</label>
+                  <input type="email" name="email" id="login-email" placeholder="Enter your email" required class="input-field">
+                  <p class="error-message">Please enter a valid email address</p>
+                </div>
+
+                <div class="input-wrapper">
+                  <label for="login-password" class="label">Password</label>
+                  <div class="password-wrapper">
+                    <input type="password" name="password" id="login-password" placeholder="Enter your password" required class="input-field">
+                    <button type="button" class="password-toggle" aria-label="toggle password visibility">
+                      <ion-icon name="eye-outline" aria-hidden="true"></ion-icon>
+                    </button>
+                  </div>
+                  <p class="error-message">Password must be at least 6 characters</p>
+                  <a href="#" class="forgot-password">Forgot Password?</a>
+                </div>
+
+                <button type="submit" class="btn btn-primary has-before has-after">
+                  <span class="span">Login</span>
+                </button>
+
+                <div class="divider">
+                  <span class="divider-text">Or login with</span>
+                </div>
+
+                <div class="social-login-btns">
+                  <a href="#" class="social-login-btn">
+                    <ion-icon name="logo-google" aria-hidden="true"></ion-icon>
+                  </a>
+                  <a href="#" class="social-login-btn">
+                    <ion-icon name="logo-facebook" aria-hidden="true"></ion-icon>
+                  </a>
+                  <a href="#" class="social-login-btn">
+                    <ion-icon name="logo-twitter" aria-hidden="true"></ion-icon>
+                  </a>
+                </div>
+              </form>
+            </div>
+
+            <!-- Signup Form -->
+            <div class="tab-content" id="signup-tab">
+              <form action="#" class="auth-form" id="signupForm">
+                <div class="input-row">
+                  <div class="input-wrapper">
+                    <label for="firstName" class="label">First Name</label>
+                    <input type="text" name="firstName" id="firstName" placeholder="First name" required class="input-field">
+                    <p class="error-message">First name is required</p>
+                  </div>
+
+                  <div class="input-wrapper">
+                    <label for="lastName" class="label">Last Name</label>
+                    <input type="text" name="lastName" id="lastName" placeholder="Last name" required class="input-field">
+                    <p class="error-message">Last name is required</p>
+                  </div>
+                </div>
+
+                <div class="input-wrapper">
+                  <label for="signup-email" class="label">Email Address</label>
+                  <input type="email" name="email" id="signup-email" placeholder="Enter your email" required class="input-field">
+                  <p class="error-message">Please enter a valid email address</p>
+                </div>
+
+                <div class="input-wrapper">
+                  <label for="signup-password" class="label">Password</label>
+                  <div class="password-wrapper">
+                    <input type="password" name="password" id="signup-password" placeholder="Create a password" required class="input-field">
+                    <button type="button" class="password-toggle" aria-label="toggle password visibility">
+                      <ion-icon name="eye-outline" aria-hidden="true"></ion-icon>
+                    </button>
+                  </div>
+                  <div class="password-strength">
+                    <div class="strength-bar" id="bar1"></div>
+                    <div class="strength-bar" id="bar2"></div>
+                    <div class="strength-bar" id="bar3"></div>
+                    <div class="strength-bar" id="bar4"></div>
+                  </div>
+                  <p class="strength-text" id="strengthText">Password strength</p>
+                  <p class="error-message">Password must be at least 8 characters</p>
+                </div>
+
+                <div class="input-wrapper">
+                  <label for="confirmPassword" class="label">Confirm Password</label>
+                  <div class="password-wrapper">
+                    <input type="password" name="confirmPassword" id="confirmPassword" placeholder="Confirm your password" required class="input-field">
+                    <button type="button" class="password-toggle" aria-label="toggle password visibility">
+                      <ion-icon name="eye-outline" aria-hidden="true"></ion-icon>
+                    </button>
+                  </div>
+                  <p class="error-message">Passwords do not match</p>
+                </div>
+
+               
+                <button type="submit" class="btn btn-primary has-before has-after">
+                  <span class="span">Create Account</span>
+                </button>
+
+                <div class="divider">
+                  <span class="divider-text">Or sign up with</span>
+                </div>
+
+                <div class="social-login-btns">
+                  <a href="#" class="social-login-btn">
+                    <ion-icon name="logo-google" aria-hidden="true"></ion-icon>
+                  </a>
+                  <a href="#" class="social-login-btn">
+                    <ion-icon name="logo-facebook" aria-hidden="true"></ion-icon>
+                  </a>
+                  <a href="#" class="social-login-btn">
+                    <ion-icon name="logo-twitter" aria-hidden="true"></ion-icon>
+                  </a>
+                </div>
+              </form>
+            </div>
+
+          </div>
+
+        </div>
+      </section>
+
+    </article>
+  </main>
+
+  <!-- 
+    - #FOOTER
+  -->
+
+  <footer class="footer">
+    <div class="container">
+
+      <div class="footer-top section">
+
+        <div class="footer-brand">
+
+          <p class="footer-list-title">About Dhvtisu</p>
+
+          <p class="footer-text">
+            A new way to make the payments easy, reliable and 100% secure. claritatem itamconse quat. Exerci tationulla
+          </p>
+
+          <ul class="social-list">
+
+            <li>
+              <a href="#" class="social-link">
+                <ion-icon name="logo-youtube"></ion-icon>
+              </a>
+            </li>
+
+            <li>
+              <a href="#" class="social-link">
+                <ion-icon name="logo-twitter"></ion-icon>
+              </a>
+            </li>
+
+            <li>
+              <a href="#" class="social-link">
+                <ion-icon name="logo-facebook"></ion-icon>
+              </a>
+            </li>
+
+            <li>
+              <a href="#" class="social-link">
+                <ion-icon name="logo-skype"></ion-icon>
+              </a>
+            </li>
+
+          </ul>
+
+        </div>
+
+        <ul class="footer-list">
+
+          <li>
+            <p class="footer-list-title">Usefull Links</p>
+          </li>
+
+          <li>
+            <a href="contact.html" class="footer-link">Contact us</a>
+          </li>
+
+          <li>
+            <a href="#" class="footer-link">How it Works</a>
+          </li>
+
+          <li>
+            <a href="#" class="footer-link">Create</a>
+          </li>
+
+          <li>
+            <a href="#" class="footer-link">Explore</a>
+          </li>
+
+          <li>
+            <a href="#" class="footer-link">Terms & Services</a>
+          </li>
+
+        </ul>
+
+        <ul class="footer-list">
+
+          <li>
+            <p class="footer-list-title">Community</p>
+          </li>
+
+          <li>
+            <a href="#" class="footer-link">Help Center</a>
+          </li>
+
+          <li>
+            <a href="#" class="footer-link">Partners</a>
+          </li>
+
+          <li>
+            <a href="#" class="footer-link">Suggestions</a>
+          </li>
+
+          <li>
+            <a href="#" class="footer-link">Blog</a>
+          </li>
+
+          <li>
+            <a href="#" class="footer-link">Newsletters</a>
+          </li>
+
+        </ul>
+
+        <ul class="footer-list">
+
+          <li>
+            <p class="footer-list-title">Instagram post</p>
+          </li>
+
+          <li>
+            <ul class="insta-post">
+
+              <li>
+                <div class="insta-card">
+
+                  <figure class="post-banner">
+                    <img src="./assets/images/insta-post-1.jpg" width="77" height="63" loading="lazy"
+                      alt="instagram post" class="img-cover">
+                  </figure>
+
+                  <a href="#" class="card-content">
+                    <ion-icon name="logo-instagram" aria-hidden="true"></ion-icon>
+                  </a>
+
+                </div>
+              </li>
+
+              <li>
+                <div class="insta-card">
+
+                  <figure class="post-banner">
+                    <img src="./assets/images/insta-post-2.jpg" width="77" height="63" loading="lazy"
+                      alt="instagram post" class="img-cover">
+                  </figure>
+
+                  <a href="#" class="card-content">
+                    <ion-icon name="logo-instagram" aria-hidden="true"></ion-icon>
+                  </a>
+
+                </div>
+              </li>
+
+              <li>
+                <div class="insta-card">
+
+                  <figure class="post-banner">
+                    <img src="./assets/images/insta-post-3.jpg" width="77" height="63" loading="lazy"
+                      alt="instagram post" class="img-cover">
+                  </figure>
+
+                  <a href="#" class="card-content">
+                    <ion-icon name="logo-instagram" aria-hidden="true"></ion-icon>
+                  </a>
+
+                </div>
+              </li>
+
+              <li>
+                <div class="insta-card">
+
+                  <figure class="post-banner">
+                    <img src="./assets/images/insta-post-4.jpg" width="77" height="63" loading="lazy"
+                      alt="instagram post" class="img-cover">
+                  </figure>
+
+                  <a href="#" class="card-content">
+                    <ion-icon name="logo-instagram" aria-hidden="true"></ion-icon>
+                  </a>
+
+                </div>
+              </li>
+
+              <li>
+                <div class="insta-card">
+
+                  <figure class="post-banner">
+                    <img src="./assets/images/insta-post-5.jpg" width="77" height="63" loading="lazy"
+                      alt="instagram post" class="img-cover">
+                  </figure>
+
+                  <a href="#" class="card-content">
+                    <ion-icon name="logo-instagram" aria-hidden="true"></ion-icon>
+                  </a>
+
+                </div>
+              </li>
+
+              <li>
+                <div class="insta-card">
+
+                  <figure class="post-banner">
+                    <img src="./assets/images/insta-post-6.jpg" width="77" height="63" loading="lazy"
+                      alt="instagram post" class="img-cover">
+                  </figure>
+
+                  <a href="#" class="card-content">
+                    <ion-icon name="logo-instagram" aria-hidden="true"></ion-icon>
+                  </a>
+
+                </div>
+              </li>
+
+            </ul>
+          </li>
+
+        </ul>
+
+      </div>
+
+      <div class="footer-bottom">
+
+        <p class="copyright">
+          &copy; 2022 Dhvtisu. All Rights Reserved by Dhvtisu
+        </p>
+
+        <ul class="footer-bottom-list">
+
+          <li>
+            <a href="#" class="footer-bottom-link">Terms and conditions</a>
+          </li>
+
+          <li>
+            <a href="#" class="footer-bottom-link">Privacy policy</a>
+          </li>
+
+          <li>
+            <a href="auth.html" class="footer-bottom-link">Login / Signup</a>
+          </li>
+
+        </ul>
+
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- 
+    - #BACK TO TOP
+  -->
+
+  <a href="#top" class="back-top-btn has-after active" aria-label="back to top" data-back-top-btn>
+    <ion-icon name="arrow-up" aria-hidden="true"></ion-icon>
+  </a>
+
+  <!-- 
+    - custom js link
+  -->
+  <script src="./assets/js/script.js" defer></script>
+ 
+
+  <!-- 
+    - ionicon link
+  -->
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+  <script>
+    // Add this CSS to the top of the file to fix the checkbox alignment
+document.addEventListener("DOMContentLoaded", () => {
+  // Add custom CSS to fix the checkbox alignment
+  const style = document.createElement("style")
+  style.textContent = `
+    .checkbox-wrapper {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      margin-block: 15px;
+    }
+    
+    .checkbox-wrapper input[type="checkbox"] {
+      margin-top: 3px;
+      min-width: 16px;
+      height: 16px;
+    }
+    
+    .checkbox-label {
+      color: var(--cool-gray);
+      font-size: var(--fs-9);
+      line-height: 1.4;
+    }
+  `
+  document.head.appendChild(style)
+
+  // DOM Elements
+  // Tab switching functionality
+  const tabBtns = document.querySelectorAll(".tab-btn")
+  const tabContents = document.querySelectorAll(".tab-content")
+
+  tabBtns.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const tabId = btn.getAttribute("data-tab")
+
+      // Remove active class from all tabs and contents
+      tabBtns.forEach((b) => b.classList.remove("active"))
+      tabContents.forEach((c) => c.classList.remove("active"))
+
+      // Add active class to current tab and content
+      btn.classList.add("active")
+      document.getElementById(`${tabId}-tab`).classList.add("active")
+    })
+  })
+
+  // Password toggle functionality
+  const passwordToggles = document.querySelectorAll(".password-toggle")
+
+  passwordToggles.forEach((toggle) => {
+    toggle.addEventListener("click", () => {
+      const passwordField = toggle.previousElementSibling
+      const type = passwordField.getAttribute("type") === "password" ? "text" : "password"
+      passwordField.setAttribute("type", type)
+
+      // Toggle icon
+      const icon = toggle.querySelector("ion-icon")
+      icon.setAttribute("name", type === "password" ? "eye-outline" : "eye-off-outline")
+    })
+  })
+
+  // Password strength indicator
+  const signupPassword = document.getElementById("signup-password")
+  const strengthBars = [
+    document.getElementById("bar1"),
+    document.getElementById("bar2"),
+    document.getElementById("bar3"),
+    document.getElementById("bar4"),
+  ]
+  const strengthText = document.getElementById("strengthText")
+
+  signupPassword?.addEventListener("input", () => {
+    const password = signupPassword.value
+    let strength = 0
+
+    // Check password length
+    if (password.length >= 8) strength += 1
+
+    // Check for lowercase and uppercase
+    if (/[a-z]/.test(password) && /[A-Z]/.test(password)) strength += 1
+
+    // Check for numbers
+    if (/[0-9]/.test(password)) strength += 1
+
+    // Check for special characters
+    if (/[^a-zA-Z0-9]/.test(password)) strength += 1
+
+    // Update strength bars
+    strengthBars.forEach((bar, index) => {
+      if (index < strength) {
+        bar.style.backgroundColor = getStrengthColor(strength)
+      } else {
+        bar.style.backgroundColor = "var(--gainsboro)"
+      }
+    })
+
+    // Update strength text
+    strengthText.textContent = getStrengthText(strength)
+    strengthText.style.color = getStrengthColor(strength)
+  })
+
+  function getStrengthColor(strength) {
+    switch (strength) {
+      case 1:
+        return "var(--bittersweet)" // Weak - Red
+      case 2:
+        return "var(--selective-yellow)" // Fair - Yellow
+      case 3:
+        return "var(--yellow-green)" // Good - Light Green
+      case 4:
+        return "var(--emerald)" // Strong - Green
+      default:
+        return "var(--cool-gray)"
+    }
+  }
+
+  function getStrengthText(strength) {
+    switch (strength) {
+      case 1:
+        return "Weak password"
+      case 2:
+        return "Fair password"
+      case 3:
+        return "Good password"
+      case 4:
+        return "Strong password"
+      default:
+        return "Password strength"
+    }
+  }
+
+  // Form validation
+  const loginForm = document.getElementById("loginForm")
+  const signupForm = document.getElementById("signupForm")
+
+  // Login form validation
+  loginForm?.addEventListener("submit", (e) => {
+    e.preventDefault()
+
+    const email = document.getElementById("login-email")
+    const password = document.getElementById("login-password")
+    let isValid = true
+
+    // Validate email
+    if (!validateEmail(email.value)) {
+      showError(email, "Please enter a valid email address")
+      isValid = false
+    } else {
+      hideError(email)
+    }
+
+    // Validate password
+    if (password.value.length < 6) {
+      showError(password, "Password must be at least 6 characters")
+      isValid = false
+    } else {
+      hideError(password)
+    }
+
+    if (isValid) {
+      // Submit the form - replace with your actual login logic
+      console.log("Login form submitted successfully")
+      alert("Login successful!")
+      // You would typically make an API call here
+      // loginUser(email.value, password.value);
+    }
+  })
+
+  // Signup form validation
+  signupForm?.addEventListener("submit", (e) => {
+    e.preventDefault()
+
+    const firstName = document.getElementById("firstName")
+    const lastName = document.getElementById("lastName")
+    const email = document.getElementById("signup-email")
+    const password = document.getElementById("signup-password")
+    const confirmPassword = document.getElementById("confirmPassword")
+    const terms = document.getElementById("terms")
+    let isValid = true
+
+    // Validate first name
+    if (firstName.value.trim() === "") {
+      showError(firstName, "First name is required")
+      isValid = false
+    } else {
+      hideError(firstName)
+    }
+
+    // Validate last name
+    if (lastName.value.trim() === "") {
+      showError(lastName, "Last name is required")
+      isValid = false
+    } else {
+      hideError(lastName)
+    }
+
+    // Validate email
+    if (!validateEmail(email.value)) {
+      showError(email, "Please enter a valid email address")
+      isValid = false
+    } else {
+      hideError(email)
+    }
+
+    // Validate password
+    if (password.value.length < 8) {
+      showError(password, "Password must be at least 8 characters")
+      isValid = false
+    } else {
+      hideError(password)
+    }
+
+    // Validate confirm password
+    if (password.value !== confirmPassword.value) {
+      showError(confirmPassword, "Passwords do not match")
+      isValid = false
+    } else {
+      hideError(confirmPassword)
+    }
+
+    // Validate terms
+    if (!terms.checked) {
+      alert("Please agree to the Terms of Service and Privacy Policy")
+      isValid = false
+    }
+
+    if (isValid) {
+      // Submit the form - replace with your actual signup logic
+      console.log("Signup form submitted successfully")
+
+      // Create user object
+      const userData = {
+        firstName: firstName.value,
+        lastName: lastName.value,
+        email: email.value,
+        password: password.value,
+      }
+
+      // You would typically make an API call here
+      // registerUser(userData);
+
+      // For demo purposes, simulate successful registration
+      alert("Account created successfully! You can now log in.")
+
+      // Reset form
+      signupForm.reset()
+
+      // Switch to login tab
+      document.querySelector('[data-tab="login"]').click()
+    }
+  })
+
+  // Helper functions
+  function validateEmail(email) {
+    const re =
+      /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+    return re.test(String(email).toLowerCase())
+  }
+
+  function showError(input, message) {
+    const wrapper = input.closest(".input-wrapper")
+    wrapper.classList.add("show-error")
+    input.classList.add("input-error")
+    const errorElement = wrapper.querySelector(".error-message")
+    if (errorElement) {
+      errorElement.textContent = message
+    }
+
+    // Add shake animation
+    wrapper.classList.add("shake")
+    setTimeout(() => {
+      wrapper.classList.remove("shake")
+    }, 500)
+  }
+
+  function hideError(input) {
+    const wrapper = input.closest(".input-wrapper")
+    wrapper.classList.remove("show-error")
+    input.classList.remove("input-error")
+  }
+
+  // For a real implementation, you would add these functions:
+
+  // async function loginUser(email, password) {
+  //   try {
+  //     const response = await fetch('/api/login', {
+  //       method: 'POST',
+  //       headers: {
+  //         'Content-Type': 'application/json',
+  //       },
+  //       body: JSON.stringify({ email, password }),
+  //     });
+  //
+  //     const data = await response.json();
+  //
+  //     if (response.ok) {
+  //       // Redirect to dashboard or home page
+  //       window.location.href = '/dashboard';
+  //     } else {
+  //       alert(data.message || 'Login failed. Please try again.');
+  //     }
+  //   } catch (error) {
+  //     console.error('Login error:', error);
+  //     alert('An error occurred during login. Please try again.');
+  //   }
+  // }
+  //
+  // async function registerUser(userData) {
+  //   try {
+  //     const response = await fetch('/api/register', {
+  //       method: 'POST',
+  //       headers: {
+  //         'Content-Type': 'application/json',
+  //       },
+  //       body: JSON.stringify(userData),
+  //     });
+  //
+  //     const data = await response.json();
+  //
+  //     if (response.ok) {
+  //       alert('Registration successful! Please log in.');
+  //       // Switch to login tab
+  //       document.querySelector('[data-tab="login"]').click();
+  //     } else {
+  //       alert(data.message || 'Registration failed. Please try again.');
+  //     }
+  //   } catch (error) {
+  //     console.error('Registration error:', error);
+  //     alert('An error occurred during registration. Please try again.');
+  //   }
+  // }
+})
+
+console.log("Auth script loaded successfully!")
+
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,1584 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dhvtisu - AI Professional Services</title>
+
+  <!-- 
+    - favicon
+  -->
+  <link rel="shortcut icon" href="./favicon.svg" type="image/svg+xml">
+
+  <!-- 
+    - custom css link
+  -->
+  <link rel="stylesheet" href="./assets/css/style1.css">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <!-- 
+    - preload images
+  -->
+  <link rel="preload" as="image" href="./assets/images/hero-banner.png">
+  
+  <style>
+    :root {
+      /**
+       * colors
+       */
+      --sky-blue-crayola: hsl(188, 64%, 60%);
+      --raisin-black_90: hsla(240, 8%, 12%, 0.9);
+      --raisin-black-1: hsl(240, 8%, 17%);
+      --raisin-black-2: hsl(240, 8%, 12%);
+      --majorelle-blue: hsl(241, 77%, 63%);
+      --blue-ryb_80: hsla(241, 88%, 60%, 0.8);
+      --bittersweet: hsl(0, 100%, 69%);
+      --eerie-black: hsl(0, 0%, 13%);
+      --ghost-white: hsl(230, 60%, 98%);
+      --light-gray: hsl(0, 0%, 80%);
+      --slate-gray: hsl(225, 8%, 48%);
+      --cool-gray: hsl(225, 11%, 59%);
+      --gainsboro: hsl(217, 16%, 90%);
+      --mustard: hsl(47, 100%, 69%);
+      --white: hsl(0, 0%, 100%);
+      --black: hsl(0, 0%, 0%);
+      --onyx: hsl(240, 5%, 26%);
+      --jet: hsl(0, 0%, 21%);
+
+      /**
+       * gradient
+       */
+      --gradient: radial-gradient(ellipse at center, hsla(0, 0%, 0%, 0.25), transparent 80%);
+
+      /**
+       * typography
+       */
+      --ff-dm-sans: 'DM Sans', sans-serif;
+
+      --fs-1: 4rem;
+      --fs-2: 3.5rem;
+      --fs-3: 2.4rem;
+      --fs-4: 2.2rem;
+      --fs-5: 2rem;
+      --fs-6: 1.8rem;
+      --fs-7: 1.7rem;
+      --fs-8: 1.5rem;
+      --fs-9: 1.4rem;
+
+      --fw-500: 500;
+      --fw-700: 700;
+
+      /**
+       * spacing
+       */
+      --section-padding: 100px;
+
+      /**
+       * shadow
+       */
+      --shadow-1: 0px 2px 50px hsla(223, 40%, 76%, 0.3);
+      --shadow-2: 0px -2px 12px hsl(252, 29%, 93%);
+      --shadow-3: 0px 4px 4px hsla(231, 20%, 49%, 0.06);
+      --shadow-4: 0px 15px 30px hsla(210, 30%, 32%, 0.05);
+      --shadow-5: 0px 15px hsla(241, 62%, 34%, 0.04);
+
+      /**
+       * radius
+       */
+      --radius-8: 8px;
+      --radius-10: 10px;
+      --radius-15: 15px;
+      --radius-20: 20px;
+
+      /**
+       * transition
+       */
+      --transition-1: 0.25s ease;
+      --transition-2: 0.5s ease;
+      --cubic-in: cubic-bezier(0.51, 0.03, 0.64, 0.28);
+      --cubic-out: cubic-bezier(0.33, 0.85, 0.4, 0.96);
+    }
+
+    /*-----------------------------------*\
+      #RESET
+    \*-----------------------------------*/
+    *,
+    *::before,
+    *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    li { list-style: none; }
+
+    a,
+    img,
+    span,
+    input,
+    button,
+    ion-icon { display: block; }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img { height: auto; }
+
+    input,
+    button {
+      background: none;
+      border: none;
+      font: inherit;
+    }
+
+    input { width: 100%; }
+
+    button { cursor: pointer; }
+
+    ion-icon { pointer-events: none; }
+
+    html {
+      font-family: var(--ff-dm-sans);
+      font-size: 10px;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: var(--white);
+      color: var(--slate-gray);
+      font-size: 1.6rem;
+      line-height: 1.75;
+    }
+
+    :focus-visible { outline-offset: 4px; }
+
+    ::-webkit-scrollbar { width: 10px; }
+
+    ::-webkit-scrollbar-track { background-color: hsl(0, 0%, 98%); }
+
+    ::-webkit-scrollbar-thumb { background-color: hsl(0, 0%, 80%); }
+
+    ::-webkit-scrollbar-thumb:hover { background-color: hsl(0, 0%, 70%); }
+
+    /*-----------------------------------*\
+      #REUSED STYLE
+    \*-----------------------------------*/
+    .container { padding-inline: 15px; }
+
+    .section { padding-block: var(--section-padding); }
+
+    .h1,
+    .h2 { letter-spacing: -2px; }
+
+    .h1 {
+      color: var(--black);
+      font-size: var(--fs-1);
+      line-height: 1.1;
+    }
+
+    .h2,
+    .h3 { color: var(--raisin-black-1); }
+
+    .h2 {
+      font-size: var(--fs-2);
+      line-height: 1.2;
+    }
+
+    .h3 {
+      font-size: var(--fs-3);
+      line-height: 1.3;
+      font-weight: var(--fw-500);
+    }
+
+    .has-before,
+    .has-after {
+      position: relative;
+      z-index: 1;
+    }
+
+    .has-before::before,
+    .has-after::after {
+      content: "";
+      position: absolute;
+    }
+
+    :is(.h1, .h2) .has-before { display: inline-block; }
+
+    :is(.h1, .h2) .has-before::before {
+      bottom: 8px;
+      left: 0;
+      width: 100%;
+      height: 6px;
+      background-color: var(--mustard);
+      z-index: -1;
+    }
+
+    .btn {
+      max-width: max-content;
+      font-weight: var(--fw-700);
+      height: 55px;
+      display: flex;
+      align-items: center;
+      padding-inline: 50px;
+      border-radius: var(--radius-10);
+      overflow: hidden;
+      transition: var(--transition-2);
+    }
+
+    .btn::before,
+    .btn::after {
+      right: 0;
+      width: 100%;
+      height: 50%;
+      transform: scaleX(0);
+      background-color: var(--mustard);
+      z-index: -1;
+      transition: transform var(--transition-1);
+    }
+
+    .btn::before {
+      top: 0;
+      transform-origin: left;
+    }
+
+    .btn::after {
+      top: 50%;
+      transform-origin: right;
+    }
+
+    .btn:is(:hover, :focus)::before,
+    .btn:is(:hover, :focus)::after { transform: scaleX(1); }
+
+    .btn:is(:hover, :focus)::before { transform-origin: right; }
+
+    .btn:is(:hover, :focus)::after { transform-origin: left; }
+
+    .btn-primary {
+      background-color: var(--majorelle-blue);
+      color: var(--white);
+    }
+
+    .btn-primary:is(:hover, :focus) { color: var(--raisin-black-1); }
+
+    .btn-secondary {
+      background-color: var(--mustard);
+      color: var(--raisin-black-1);
+      gap: 15px;
+    }
+
+    .btn-secondary::before,
+    .btn-secondary::after { background-color: var(--sky-blue-crayola); }
+
+    .btn-secondary:is(:hover, :focus) { color: var(--white); }
+
+    .social-list { display: flex; }
+
+    .w-100 { width: 100%; }
+
+    .section-subtitle {
+      color: var(--cool-gray);
+      font-size: var(--fs-6);
+      font-weight: var(--fw-500);
+      line-height: 1.2;
+    }
+
+    .section-subtitle::before {
+      position: static;
+      width: 12px;
+      height: 12px;
+      background-color: var(--mustard);
+      display: inline-block;
+      border-radius: 50%;
+      margin-inline-end: 10px;
+    }
+
+    .text-center { text-align: center; }
+
+    .section-title { margin-block: 30px 50px; }
+
+    .grid-list {
+      display: grid;
+      gap: 30px;
+    }
+
+    .img-holder {
+      aspect-ratio: var(--width) / var(--height);
+      background-color: var(--light-gray);
+      overflow: hidden;
+    }
+
+    .img-cover {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .has-bg-image {
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: cover;
+    }
+
+    /* Service page specific styles */
+    .service-detail {
+      background-color: var(--ghost-white);
+      padding-block: var(--section-padding);
+    }
+
+    .service-detail .container {
+      display: grid;
+      gap: 50px;
+    }
+
+    .service-banner {
+      border-radius: var(--radius-20);
+      overflow: hidden;
+    }
+
+    .service-content {
+      padding: 30px;
+      background-color: var(--white);
+      border-radius: var(--radius-20);
+      box-shadow: var(--shadow-1);
+    }
+
+    .service-title {
+      font-size: var(--fs-2);
+      margin-bottom: 20px;
+      color: var(--raisin-black-1);
+    }
+
+    .service-text {
+      color: var(--cool-gray);
+      margin-bottom: 30px;
+    }
+
+    .service-list {
+      margin-bottom: 30px;
+    }
+
+    .service-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 15px;
+      margin-bottom: 15px;
+    }
+
+    .service-item-icon {
+      background-color: var(--ghost-white);
+      min-width: 45px;
+      height: 45px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      font-size: 18px;
+      color: var(--majorelle-blue);
+      transition: var(--transition-1);
+    }
+
+    .service-item:hover .service-item-icon {
+      background-color: var(--majorelle-blue);
+      color: var(--white);
+    }
+
+    .service-item-title {
+      font-size: var(--fs-6);
+      font-weight: var(--fw-700);
+      margin-bottom: 5px;
+      color: var(--raisin-black-1);
+    }
+
+    .service-item-text {
+      color: var(--cool-gray);
+      font-size: var(--fs-8);
+    }
+
+    .cta-card {
+      background-color: var(--majorelle-blue);
+      color: var(--white);
+      padding: 40px 30px;
+      border-radius: var(--radius-15);
+      text-align: center;
+      margin-top: 50px;
+    }
+
+    .cta-title {
+      font-size: var(--fs-3);
+      font-weight: var(--fw-700);
+      margin-bottom: 20px;
+    }
+
+    .cta-text {
+      margin-bottom: 30px;
+    }
+
+    .cta-btn {
+      background-color: var(--white);
+      color: var(--raisin-black-1);
+      margin-inline: auto;
+    }
+
+    .cta-btn::before,
+    .cta-btn::after {
+      background-color: var(--mustard);
+    }
+
+    .cta-btn:is(:hover, :focus) {
+      color: var(--raisin-black-1);
+    }
+
+    /* Process section */
+    .process-list {
+      display: grid;
+      gap: 30px;
+    }
+
+    .process-card {
+      background-color: var(--white);
+      padding: 30px;
+      border-radius: var(--radius-15);
+      box-shadow: var(--shadow-1);
+      position: relative;
+      z-index: 1;
+    }
+
+    .process-card::before {
+      content: attr(data-number);
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      font-size: 5rem;
+      font-weight: var(--fw-700);
+      color: var(--ghost-white);
+      line-height: 1;
+      z-index: -1;
+    }
+
+    .process-card-icon {
+      background-color: var(--ghost-white);
+      width: 60px;
+      height: 60px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      color: var(--majorelle-blue);
+      font-size: 25px;
+      margin-bottom: 20px;
+      transition: var(--transition-1);
+    }
+
+    .process-card:hover .process-card-icon {
+      background-color: var(--majorelle-blue);
+      color: var(--white);
+    }
+
+    .process-card-title {
+      font-size: var(--fs-5);
+      font-weight: var(--fw-700);
+      margin-bottom: 15px;
+      color: var(--raisin-black-1);
+    }
+
+    .process-card-text {
+      color: var(--cool-gray);
+      font-size: var(--fs-7);
+    }
+
+    /* Testimonial section */
+    .testimonial-card {
+      background-color: var(--white);
+      padding: 30px;
+      border-radius: var(--radius-15);
+      box-shadow: var(--shadow-1);
+    }
+
+    .testimonial-text {
+      color: var(--cool-gray);
+      font-size: var(--fs-7);
+      margin-bottom: 30px;
+      font-style: italic;
+    }
+
+    .testimonial-client {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .client-img {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    .client-info h4 {
+      font-size: var(--fs-6);
+      font-weight: var(--fw-700);
+      color: var(--raisin-black-1);
+    }
+
+    .client-info p {
+      font-size: var(--fs-9);
+      color: var(--cool-gray);
+    }
+
+    /* FAQ section */
+    .faq-list {
+      margin-top: 50px;
+    }
+
+    .faq-item {
+      background-color: var(--white);
+      border-radius: var(--radius-10);
+      box-shadow: var(--shadow-3);
+      margin-bottom: 20px;
+      overflow: hidden;
+    }
+
+    .faq-question {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px;
+      cursor: pointer;
+      transition: var(--transition-1);
+    }
+
+    .faq-question h3 {
+      font-size: var(--fs-7);
+      font-weight: var(--fw-500);
+      color: var(--raisin-black-1);
+    }
+
+    .faq-question ion-icon {
+      font-size: 20px;
+      color: var(--majorelle-blue);
+      transition: var(--transition-1);
+    }
+
+    .faq-answer {
+      padding: 0 20px;
+      height: 0;
+      overflow: hidden;
+      transition: var(--transition-1);
+    }
+
+    .faq-answer p {
+      color: var(--cool-gray);
+      font-size: var(--fs-8);
+      padding-bottom: 20px;
+    }
+
+    .faq-item.active .faq-question {
+      background-color: var(--ghost-white);
+    }
+
+    .faq-item.active .faq-question ion-icon {
+      transform: rotate(180deg);
+    }
+
+    .faq-item.active .faq-answer {
+      height: auto;
+    }
+
+    /* Sample section */
+    .sample-card {
+      background-color: var(--white);
+      padding: 30px;
+      border-radius: var(--radius-15);
+      box-shadow: var(--shadow-1);
+      margin-bottom: 30px;
+    }
+
+    .sample-title {
+      font-size: var(--fs-5);
+      font-weight: var(--fw-700);
+      margin-bottom: 15px;
+      color: var(--raisin-black-1);
+    }
+
+    .sample-text {
+      color: var(--cool-gray);
+      font-size: var(--fs-7);
+      line-height: 1.8;
+    }
+
+    /* Media queries */
+    @media (min-width: 575px) {
+      .container {
+        max-width: 540px;
+        width: 100%;
+        margin-inline: auto;
+      }
+    }
+
+    @media (min-width: 768px) {
+      :root {
+        --fs-1: 5.5rem;
+        --fs-2: 3.8rem;
+        --fs-7: 1.8rem;
+        --section-padding: 120px;
+      }
+
+      .container { max-width: 720px; }
+      .btn { height: 60px; }
+      .grid-list { grid-template-columns: 1fr 1fr; }
+
+      .process-list { grid-template-columns: 1fr 1fr 1fr; }
+    }
+
+    @media (min-width: 992px) {
+      .container { max-width: 960px; }
+      .btn { height: 70px; }
+      .grid-list { grid-template-columns: repeat(3, 1fr); }
+
+      .service-detail .container {
+        grid-template-columns: 1fr 1fr;
+        align-items: center;
+      }
+    }
+
+    @media (min-width: 1200px) {
+      :root {
+        --fs-1: 5.5rem;
+        --fs-2: 4.5rem;
+      }
+
+      .container { max-width: 1140px; }
+
+      .section-title.text-center {
+        max-width: 20ch;
+        margin-inline: auto;
+      }
+    }
+
+    /*-----------------------------------*\
+      #HEADER
+    \*-----------------------------------*/
+    .header .btn { display: none; }
+
+    .header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      padding-block: 25px;
+      transition: padding var(--transition-1);
+      z-index: 4;
+    }
+
+    .header.active {
+      background-color: var(--white);
+      padding-block: 15px;
+      box-shadow: var(--shadow-1);
+    }
+
+    .header .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      color: var(--raisin-black-1);
+      font-size: 3.6rem;
+      font-weight: var(--fw-700);
+    }
+
+    .nav-open-btn {
+      background-color: var(--white);
+      color: var(--eerie-black);
+      font-size: 35px;
+      padding: 10px;
+      box-shadow: var(--shadow-2);
+      border-radius: var(--radius-10);
+    }
+
+    .navbar {
+      position: fixed;
+      top: 0;
+      right: 0;
+      background-color: var(--raisin-black-2);
+      color: var(--white);
+      max-width: 300px;
+      width: 100%;
+      height: 100%;
+      padding: 30px;
+      z-index: 1;
+      transform: translateX(100%);
+      visibility: hidden;
+      transition: 0.25s var(--cubic-in);
+    }
+
+    .navbar.active {
+      transform: translateX(0);
+      visibility: visible;
+      transition: 0.5s var(--cubic-out);
+    }
+
+    .navbar .wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-block-end: 60px;
+    }
+
+    .navbar .logo { color: var(--white); }
+
+    .nav-close-btn {
+      color: var(--white);
+      font-size: 30px;
+      transition: var(--transition-1);
+    }
+
+    .nav-close-btn:is(:hover, :focus) { color: var(--bittersweet); }
+
+    .navbar-item:not(:last-child) { border-block-end: 1px solid var(--jet); }
+
+    .navbar-link {
+      font-size: var(--fs-9);
+      font-weight: var(--fw-700);
+      padding-block: 15px;
+      text-transform: uppercase;
+      transition: var(--transition-1);
+    }
+
+    .navbar-link:is(:hover, :focus) { color: var(--mustard); }
+
+    .overlay {
+      position: fixed;
+      inset: 0;
+      background-color: var(--raisin-black_90);
+      transition: var(--transition-2);
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .overlay.active {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    @media (min-width: 992px) {
+      .header { padding-block-start: 47px; }
+
+      .nav-open-btn,
+      .overlay,
+      .navbar .wrapper { display: none; }
+
+      .navbar,
+      .navbar.active { all: unset; }
+
+      .navbar-item:not(:last-child) { border: none; }
+
+      .navbar-list {
+        display: flex;
+        gap: 30px;
+      }
+
+      .navbar-link {
+        position: relative;
+        color: var(--cool-gray);
+        text-transform: capitalize;
+        font-size: unset;
+        font-weight: var(--fw-500);
+      }
+
+      .navbar-link:is(:hover, :focus) { color: var(--raisin-black-1); }
+
+      .navbar-link::before {
+        content: "";
+        position: absolute;
+        bottom: 5px;
+        left: 0;
+        width: 0;
+        height: 4px;
+        border-radius: 5px;
+        background-color: var(--majorelle-blue);
+        transition: var(--transition-1);
+      }
+
+      .navbar-link:is(:hover, :focus)::before { width: 100%; }
+
+      .header .btn { display: inline-flex; }
+
+      .header .btn::before,
+      .header .btn::after { background-color: var(--raisin-black-1); }
+
+      .header .btn:is(:hover, :focus) { color: var(--white); }
+    }
+
+    /*-----------------------------------*\
+      #FOOTER
+    \*-----------------------------------*/
+    .footer {
+      background-color: var(--raisin-black-1);
+      color: var(--cool-gray);
+    }
+
+    .footer-top {
+      padding-block-end: 60px;
+      display: grid;
+      gap: 50px;
+    }
+
+    .footer-list-title {
+      color: var(--white);
+      font-size: var(--fs-5);
+      font-weight: var(--fw-500);
+      margin-block-end: 20px;
+    }
+
+    .footer-text { margin-block-end: 30px; }
+
+    .footer .social-list { gap: 12px; }
+
+    .footer .social-link {
+      background-color: var(--onyx);
+      padding: 14px;
+      border-radius: 50%;
+      transition: var(--transition-1);
+    }
+
+    .footer .social-link:is(:hover, :focus) {
+      background-color: var(--majorelle-blue);
+      color: var(--white);
+    }
+
+    .footer-link {
+      font-size: var(--fs-8);
+      margin-block-start: 15px;
+      transition: var(--transition-1);
+    }
+
+    .footer-link:is(:hover, :focus) { color: var(--mustard); }
+
+    .insta-post {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 15px;
+    }
+
+    .insta-card {
+      position: relative;
+      border-radius: var(--radius-10);
+      overflow: hidden;
+    }
+
+    .insta-card .card-content {
+      position: absolute;
+      inset: 0;
+      display: grid;
+      place-content: center;
+      background-color: var(--blue-ryb_80);
+      color: var(--white);
+      font-size: 25px;
+      opacity: 0;
+      transition: var(--transition-1);
+    }
+
+    .insta-card:is(:hover, :focus-within) .card-content { opacity: 1; }
+
+    .footer-bottom {
+      color: var(--white);
+      font-size: var(--fs-8);
+      padding-block: 40px;
+      border-block-start: 1px solid var(--onyx);
+    }
+
+    .copyright { margin-block-end: 15px; }
+
+    .footer-bottom-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px 15px;
+    }
+
+    .footer-bottom-link { transition: var(--transition-1); }
+
+    .footer-bottom-link:is(:hover, :focus) { color: var(--mustard); }
+
+    @media (min-width: 768px) {
+      .footer-top { grid-template-columns: 1fr 1fr; }
+      .copyright { text-align: center; }
+      .footer-bottom-list { justify-content: center; }
+    }
+
+    @media (min-width: 992px) {
+      .footer-top {
+        grid-template-columns: 1fr 0.5fr 0.5fr 0.9fr;
+        padding-block: 120px;
+      }
+
+      .footer-bottom {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .copyright { margin-block-end: 0; }
+      .footer-bottom-list { justify-content: space-between; }
+    }
+
+    /*-----------------------------------*\
+      #BACK TO TOP
+    \*-----------------------------------*/
+    .back-top-btn {
+      position: fixed;
+      bottom: 20px;
+      right: 30px;
+      background-color: var(--majorelle-blue);
+      color: var(--white);
+      font-size: 18px;
+      padding: 16px;
+      border-radius: var(--radius-8);
+      z-index: 4;
+      visibility: hidden;
+      opacity: 0;
+      transition: var(--transition-1);
+    }
+
+    .back-top-btn.active {
+      visibility: visible;
+      opacity: 1;
+      transform: translateY(-10px);
+    }
+
+    .back-top-btn::after {
+      bottom: -12px;
+      right: 0;
+      width: 100%;
+      height: 10px;
+      background-image: var(--gradient);
+    }
+
+    /* Page header */
+    .page-header {
+      background-color: var(--ghost-white);
+      padding-block: 60px;
+      padding-top: 120px;
+      text-align: center;
+    }
+
+    .page-title {
+      font-size: var(--fs-1);
+      margin-bottom: 20px;
+    }
+
+    .breadcrumb {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      color: var(--cool-gray);
+    }
+
+    .breadcrumb-item:not(:last-child)::after {
+      content: "/";
+      margin-left: 10px;
+    }
+
+    .breadcrumb-link {
+      color: var(--cool-gray);
+      transition: var(--transition-1);
+    }
+
+    .breadcrumb-link:is(:hover, :focus) {
+      color: var(--majorelle-blue);
+    }
+
+    .breadcrumb-link.active {
+      color: var(--majorelle-blue);
+      font-weight: var(--fw-500);
+    }
+  </style>
+</head>
+
+<body id="top">
+
+  <!-- 
+    - #HEADER
+  -->
+
+  <header class="header" data-header>
+    <div class="container">
+
+      <a href="index.html" class="logo">Dhvtisu</a>
+
+      <nav class="navbar" data-navbar>
+
+        <div class="wrapper">
+          <a href="index.html" class="logo">Dhvtisu</a>
+
+          <button class="nav-close-btn" aria-label="close menu" data-nav-toggler>
+            <ion-icon name="close-outline" aria-hidden="true"></ion-icon>
+          </button>
+        </div>
+
+        <ul class="navbar-list">
+
+          <li class="navbar-item">
+            <a href="index.html" class="navbar-link" data-nav-link>Home</a>
+          </li>
+
+          <li class="navbar-item">
+            <a href="#service" class="navbar-link" data-nav-link>Services</a>
+          </li>
+
+          <li class="navbar-item">
+            <a href="#feature" class="navbar-link" data-nav-link>Features</a>
+          </li>
+
+          <li class="navbar-item">
+            <a href="#project" class="navbar-link" data-nav-link>Portfolio</a>
+          </li>
+
+          <li class="navbar-item">
+            <a href="#blog" class="navbar-link" data-nav-link>Blog</a>
+          </li>
+
+          <li class="navbar-item">
+            <a href="#contact" class="navbar-link" data-nav-link>Contact</a>
+          </li>
+
+        </ul>
+
+      </nav>
+
+      <button class="nav-open-btn" aria-label="open menu" data-nav-toggler>
+        <ion-icon name="menu-outline" aria-hidden="true"></ion-icon>
+      </button>
+
+      <a href="#contact" class="btn btn-primary has-before has-after">Let's Talk 👋</a>
+
+      <div class="overlay" data-nav-toggler data-overlay></div>
+
+    </div>
+  </header>
+
+  <!-- 
+    - #PAGE HEADER
+  -->
+  <section class="page-header">
+    <div class="container">
+      <h1 class="page-title">AI Professional</h1>
+      <div class="breadcrumb">
+        <a href="index.html" class="breadcrumb-link breadcrumb-item">Home</a>
+        <a href="#" class="breadcrumb-link breadcrumb-item">Services</a>
+        <a href="#" class="breadcrumb-link breadcrumb-item active">AI Professional</a>
+      </div>
+    </div>
+  </section>
+
+  <main>
+    <article>
+
+      <!-- 
+        - #SERVICE DETAIL
+      -->
+      <section class="service-detail">
+        <div class="container">
+
+          <figure class="service-banner">
+            <!-- 
+              For this image, search for "AI professional machine learning" on Google Images
+              Look for an image showing AI/ML concepts or data visualization
+              Recommended dimensions: 640x400px
+            -->
+            <img src="./assets/images/ai-professional-banner.jpg" width="640" height="400" loading="lazy" alt="AI Professional Services" class="w-100">
+          </figure>
+
+          <div class="service-content">
+            <h2 class="service-title">AI Professional Services</h2>
+            <p class="service-text">
+              At Dhvtisu, our AI Professional team harnesses the power of artificial intelligence and machine learning to transform businesses and solve complex problems. We develop custom AI solutions that automate processes, extract insights from data, and create intelligent systems that learn and adapt.
+            </p>
+
+            <p class="service-text">
+              From predictive analytics to natural language processing and computer vision, our AI experts work closely with you to identify opportunities where AI can drive innovation and competitive advantage. We focus on creating practical, scalable solutions that deliver measurable business value.
+            </p>
+
+            <h3 class="h3">Our AI Expertise</h3>
+            <ul class="service-list">
+              <li class="service-item">
+                <div class="service-item-icon">
+                  <ion-icon name="analytics-outline" aria-hidden="true"></ion-icon>
+                </div>
+                <div>
+                  <h4 class="service-item-title">Machine Learning Solutions</h4>
+                  <p class="service-item-text">Custom ML models for prediction, classification, and pattern recognition.</p>
+                </div>
+              </li>
+
+              <li class="service-item">
+                <div class="service-item-icon">
+                  <ion-icon name="chatbubble-ellipses-outline" aria-hidden="true"></ion-icon>
+                </div>
+                <div>
+                  <h4 class="service-item-title">Natural Language Processing</h4>
+                  <p class="service-item-text">Text analysis, sentiment analysis, and conversational AI systems.</p>
+                </div>
+              </li>
+
+              <li class="service-item">
+                <div class="service-item-icon">
+                  <ion-icon name="eye-outline" aria-hidden="true"></ion-icon>
+                </div>
+                <div>
+                  <h4 class="service-item-title">Computer Vision</h4>
+                  <p class="service-item-text">Image recognition, object detection, and visual data analysis.</p>
+                </div>
+              </li>
+
+              <li class="service-item">
+                <div class="service-item-icon">
+                  <ion-icon name="trending-up-outline" aria-hidden="true"></ion-icon>
+                </div>
+                <div>
+                  <h4 class="service-item-title">Predictive Analytics</h4>
+                  <p class="service-item-text">Data-driven forecasting and business intelligence solutions.</p>
+                </div>
+              </li>
+
+              <li class="service-item">
+                <div class="service-item-icon">
+                  <ion-icon name="git-branch-outline" aria-hidden="true"></ion-icon>
+                </div>
+                <div>
+                  <h4 class="service-item-title">AI Integration</h4>
+                  <p class="service-item-text">Seamlessly incorporating AI capabilities into existing systems and workflows.</p>
+                </div>
+              </li>
+            </ul>
+
+            <div class="cta-card">
+              <h3 class="cta-title">Ready to leverage the power of AI?</h3>
+              <p class="cta-text">Let's discuss how artificial intelligence can transform your business.</p>
+              <a href="#contact" class="btn cta-btn has-before has-after">Get Started</a>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- 
+        - #AI SOLUTIONS
+      -->
+      <section class="section">
+        <div class="container">
+          <p class="section-subtitle has-before text-center">Our Solutions</p>
+          <h2 class="h2 section-title text-center">AI-Powered <span class="has-before">Innovations</span></h2>
+
+          <div class="grid-list">
+            <div class="testimonial-card">
+              <!-- 
+                For this image, search for "predictive analytics dashboard" on Google Images
+                Look for a data visualization dashboard
+                Recommended dimensions: 300x200px
+              -->
+              <figure style="margin-bottom: 20px; border-radius: var(--radius-10); overflow: hidden;">
+                <img src="./assets/images/ai-solution-1.jpg" width="300" height="200" loading="lazy" alt="Predictive Analytics Platform" class="w-100">
+              </figure>
+              <h3 style="font-size: var(--fs-5); font-weight: var(--fw-700); margin-bottom: 15px; color: var(--raisin-black-1);">Predictive Analytics Platform</h3>
+              <p style="color: var(--cool-gray); font-size: var(--fs-7); margin-bottom: 20px;">
+                Our custom predictive analytics solution helps businesses forecast trends, optimize operations, and make data-driven decisions with greater accuracy.
+              </p>
+              <a href="#" style="color: var(--majorelle-blue); font-weight: var(--fw-500); display: flex; align-items: center; gap: 5px;">
+                Learn More <ion-icon name="arrow-forward-outline" aria-hidden="true"></ion-icon>
+              </a>
+            </div>
+
+            <div class="testimonial-card">
+              <!-- 
+                For this image, search for "chatbot AI interface" on Google Images
+                Look for a modern chatbot interface
+                Recommended dimensions: 300x200px
+              -->
+              <figure style="margin-bottom: 20px; border-radius: var(--radius-10); overflow: hidden;">
+                <img src="./assets/images/ai-solution-2.jpg" width="300" height="200" loading="lazy" alt="Intelligent Chatbot System" class="w-100">
+              </figure>
+              <h3 style="font-size: var(--fs-5); font-weight: var(--fw-700); margin-bottom: 15px; color: var(--raisin-black-1);">Intelligent Chatbot System</h3>
+              <p style="color: var(--cool-gray); font-size: var(--fs-7); margin-bottom: 20px;">
+                Our NLP-powered chatbots provide personalized customer service, answer queries, and handle transactions with human-like understanding.
+              </p>
+              <a href="#" style="color: var(--majorelle-blue); font-weight: var(--fw-500); display: flex; align-items: center; gap: 5px;">
+                Learn More <ion-icon name="arrow-forward-outline" aria-hidden="true"></ion-icon>
+              </a>
+            </div>
+
+            <div class="testimonial-card">
+              <!-- 
+                For this image, search for "computer vision object detection" on Google Images
+                Look for an image showing object detection in action
+                Recommended dimensions: 300x200px
+              -->
+              <figure style="margin-bottom: 20px; border-radius: var(--radius-10); overflow: hidden;">
+                <img src="./assets/images/ai-solution-3.jpg" width="300" height="200" loading="lazy" alt="Visual Recognition System" class="w-100">
+              </figure>
+              <h3 style="font-size: var(--fs-5); font-weight: var(--fw-700); margin-bottom: 15px; color: var(--raisin-black-1);">Visual Recognition System</h3>
+              <p style="color: var(--cool-gray); font-size: var(--fs-7); margin-bottom: 20px;">
+                Our computer vision solutions automate visual inspections, enhance security systems, and extract insights from images and video.
+              </p>
+              <a href="#" style="color: var(--majorelle-blue); font-weight: var(--fw-500); display: flex; align-items: center; gap: 5px;">
+                Learn More <ion-icon name="arrow-forward-outline" aria-hidden="true"></ion-icon>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 
+        - #PROCESS
+      -->
+      <section class="section" style="background-color: var(--ghost-white);">
+        <div class="container">
+          <p class="section-subtitle has-before text-center">Our Process</p>
+          <h2 class="h2 section-title text-center">How We Develop <span class="has-before">AI Solutions</span></h2>
+
+          <ul class="process-list">
+            <li>
+              <div class="process-card" data-number="01">
+                <div class="process-card-icon">
+                  <ion-icon name="search-outline" aria-hidden="true"></ion-icon>
+                </div>
+                <h3 class="process-card-title">Discovery & Assessment</h3>
+                <p class="process-card-text">
+                  We identify business challenges and opportunities where AI can create value.
+                </p>
+              </div>
+            </li>
+
+            <li>
+              <div class="process-card" data-number="02">
+                <div class="process-card-icon">
+                  <ion-icon name="server-outline" aria-hidden="true"></ion-icon>
+                </div>
+                <h3 class="process-card-title">Data Strategy</h3>
+                <p class="process-card-text">
+                  We evaluate data sources, quality, and requirements for effective AI implementation.
+                </p>
+              </div>
+            </li>
+
+            <li>
+              <div class="process-card" data-number="03">
+                <div class="process-card-icon">
+                  <ion-icon name="flask-outline" aria-hidden="true"></ion-icon>
+                </div>
+                <h3 class="process-card-title">Proof of Concept</h3>
+                <p class="process-card-text">
+                  We develop a prototype to validate the AI approach and demonstrate potential value.
+                </p>
+              </div>
+            </li>
+
+            <li>
+              <div class="process-card" data-number="04">
+                <div class="process-card-icon">
+                  <ion-icon name="code-slash-outline" aria-hidden="true"></ion-icon>
+                </div>
+                <h3 class="process-card-title">Solution Development</h3>
+                <p class="process-card-text">
+                  We build, train, and refine AI models tailored to your specific needs.
+                </p>
+              </div>
+            </li>
+
+            <li>
+              <div class="process-card" data-number="05">
+                <div class="process-card-icon">
+                  <ion-icon name="git-merge-outline" aria-hidden="true"></ion-icon>
+                </div>
+                <h3 class="process-card-title">Integration</h3>
+                <p class="process-card-text">
+                  We seamlessly incorporate AI capabilities into your existing systems and workflows.
+                </p>
+              </div>
+            </li>
+
+            <li>
+              <div class="process-card" data-number="06">
+                <div class="process-card-icon">
+                  <ion-icon name="trending-up-outline" aria-hidden="true"></ion-icon>
+                </div>
+                <h3 class="process-card-title">Continuous Improvement</h3>
+                <p class="process-card-text">
+                  We monitor performance, refine models, and enhance capabilities as your needs evolve.
+                </p>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- 
+        - #TESTIMONIALS
+      -->
+      <section class="section">
+        <div class="container">
+          <p class="section-subtitle has-before text-center">Testimonials</p>
+          <h2 class="h2 section-title text-center">What Our <span class="has-before">Clients Say</span></h2>
+
+          <div class="grid-list">
+            <div class="testimonial-card">
+              <p class="testimonial-text">
+                "Dhvtisu's AI team transformed our customer service operations with their intelligent chatbot solution. We've seen a 40% reduction in support costs while improving customer satisfaction scores. Their expertise in natural language processing and ability to integrate with our existing systems made the implementation smooth and effective."
+              </p>
+              <div class="testimonial-client">
+                <!-- 
+                  For this image, search for "professional headshot" on Google Images
+                  Look for a professional business portrait
+                  Recommended dimensions: 60x60px
+                -->
+                <img src="./assets/images/ai-client-1.jpg" width="60" height="60" loading="lazy" alt="Daniel Park" class="client-img">
+                <div class="client-info">
+                  <h4>Daniel Park</h4>
+                  <p>CIO, Global Retail Solutions</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="testimonial-card">
+              <p class="testimonial-text">
+                "The predictive analytics platform developed by Dhvtisu has revolutionized our inventory management. Their AI models accurately forecast demand patterns, helping us reduce excess inventory by 35% while maintaining optimal stock levels. The ROI on this project was achieved within just six months."
+              </p>
+              <div class="testimonial-client">
+                <!-- 
+                  For this image, search for "professional woman headshot" on Google Images
+                  Look for a professional business portrait of a woman
+                  Recommended dimensions: 60x60px
+                -->
+                <img src="./assets/images/ai-client-2.jpg" width="60" height="60" loading="lazy" alt="Amelia Rodriguez" class="client-img">
+                <div class="client-info">
+                  <h4>Amelia Rodriguez</h4>
+                  <p>Supply Chain Director, ManufactureTech</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="testimonial-card">
+              <p class="testimonial-text">
+                "Dhvtisu's computer vision solution has dramatically improved our quality control process. Their system can detect defects with 99.7% accuracy, far exceeding our previous manual inspection capabilities. The team's deep expertise in AI and their collaborative approach made them the perfect partner for this critical project."
+              </p>
+              <div class="testimonial-client">
+                <!-- 
+                  For this image, search for "professional man headshot" on Google Images
+                  Look for a professional business portrait of a man
+                  Recommended dimensions: 60x60px
+                -->
+                <img src="./assets/images/ai-client-3.jpg" width="60" height="60" loading="lazy" alt="Robert Chen" class="client-img">
+                <div class="client-info">
+                  <h4>Robert Chen</h4>
+                  <p>Operations Manager, Precision Industries</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 
+        - #FAQ
+      -->
+      <section class="section" style="background-color: var(--ghost-white);">
+        <div class="container">
+          <p class="section-subtitle has-before text-center">FAQ</p>
+          <h2 class="h2 section-title text-center">Frequently Asked <span class="has-before">Questions</span></h2>
+
+          <ul class="faq-list">
+            <li class="faq-item">
+              <div class="faq-question">
+                <h3>How much data do we need to implement AI solutions?</h3>
+                <ion-icon name="chevron-down-outline" aria-hidden="true"></ion-icon>
+              </div>
+              <div class="faq-answer">
+                <p>
+                  The data requirements vary depending on the complexity of the problem and the type of AI solution. While some machine learning models require large datasets for training, others can work effectively with smaller, high-quality datasets. During our assessment phase, we evaluate your existing data and determine if it's sufficient or if additional data collection is needed. We can also implement strategies like transfer learning and data augmentation to maximize the value of limited data.
+                </p>
+              </div>
+            </li>
+
+            <li class="faq-item">
+              <div class="faq-question">
+                <h3>How long does it take to develop and implement an AI solution?</h3>
+                <ion-icon name="chevron-down-outline" aria-hidden="true"></ion-icon>
+              </div>
+              <div class="faq-answer">
+                <p>
+                  The timeline for AI implementation varies based on project scope, complexity, and data readiness. A proof of concept can typically be developed in 4-8 weeks. Full-scale implementation usually takes 3-6 months, including model training, testing, and integration. We follow an agile approach, delivering incremental value throughout the development process rather than waiting for final deployment to demonstrate results.
+                </p>
+              </div>
+            </li>
+
+            <li class="faq-item">
+              <div class="faq-question">
+                <h3>How do you ensure the accuracy and reliability of AI models?</h3>
+                <ion-icon name="chevron-down-outline" aria-hidden="true"></ion-icon>
+              </div>
+              <div class="faq-answer">
+                <p>
+                  We implement rigorous testing and validation procedures throughout the development process. This includes cross-validation, A/B testing, and performance monitoring against established metrics. We also build explainability into our models where possible, allowing for better understanding of how decisions are made. Additionally, we implement continuous monitoring systems that track model performance over time and alert us to any drift or degradation, ensuring sustained accuracy and reliability.
+                </p>
+              </div>
+            </li>
+
+            <li class="faq-item">
+              <div class="faq-question">
+                <h3>Can AI solutions integrate with our existing systems?</h3>
+                <ion-icon name="chevron-down-outline" aria-hidden="true"></ion-icon>
+              </div>
+              <div class="faq-answer">
+                <p>
+                  Yes, we design our AI solutions to integrate seamlessly with your existing technology stack. We support various integration methods including APIs, microservices, and direct database connections. Our team has experience working with a wide range of enterprise systems, including CRM platforms, ERP systems, and custom applications. We prioritize creating solutions that enhance your current workflows rather than disrupting them, ensuring smooth adoption and maximum value.
+                </p>
+              </div>
+            </li>
+
+            <li class="faq-item">
+              <div class="faq-question">
+                <h3>How do you address ethical concerns and bias in AI?</h3>
+                <ion-icon name="chevron-down-outline" aria-hidden="true"></ion-icon>
+              </div>
+              <div class="faq-answer">
+                <p>
+                  Ethical AI development is central to our approach. We implement bias detection and mitigation strategies throughout the development lifecycle, from data collection to model deployment. This includes diverse training data, fairness metrics, and regular audits. We also prioritize transparency in our AI systems, providing appropriate levels of explainability based on the use case. Our team stays current with evolving ethical guidelines and regulatory requirements to ensure our solutions meet the highest standards of responsible AI.
+                </p>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- 
+        - #CONTACT
+      -->
+      <section class="section contact-section" id="contact">
+        <div class="container">
+
+          <p class="section-subtitle has-before text-center slide-in">Contact Us</p>
+
+          <h2 class="h2 section-title text-center slide-in" style="animation-delay: 0.2s;">
+            Get in <span class="has-before">Touch</span> With Us
+          </h2>
+
+          <div class="contact-container">
+
+            <div class="contact-form-container slide-in" style="animation-delay: 0.3s;">
+              <div class="contact-info">
+                <h3 class="h3">Send Us A Message</h3>
+                <p>Ready to explore how AI can transform your business? Contact us today!</p>
+              </div>
+
+              <form action="#" class="contact-form">
+                <div class="input-wrapper">
+                  <label for="name" class="label">Full Name</label>
+                  <input type="text" name="name" id="name" placeholder="Your full name" required class="input-field">
+                </div>
+
+                <div class="input-wrapper">
+                  <label for="email" class="label">Email Address</label>
+                  <input type="email" name="email" id="email" placeholder="Your email address" required class="input-field">
+                </div>
+
+                <div class="input-wrapper">
+                  <label for="subject" class="label">Subject</label>
+                  <input type="text" name="subject" id="subject" placeholder="Subject" required class="input-field">
+                </div>
+
+                <div class="input-wrapper">
+                  <label for="message" class="label">Message</label>
+                  <textarea name="message" id="message" placeholder="Tell us about your AI needs" required class="input-field"></textarea>
+                </div>
+
+                <button type="submit" class="btn btn-primary has-before has-after">
+                  <span class="span">Send Message</span>
+                </button>
+              </form>
+            </div>
+
+            <div>
+              <ul class="contact-list">
+
+                <li>
+                  <div class="contact-card">
+                    <div class="card-icon">
+                      <ion-icon name="location-outline" aria-hidden="true"></ion-icon>
+                    </div>
+                    <h3 class="card-title">Our Location</h3>
+                    <p class="card-text">123 Business Avenue, Digital Valley, CA 94043, USA</p>
+                  </div>
+                </li>
+
+                <li>
+                  <div class="contact-card">
+                    <div class="card-icon">
+                      <ion-icon name="call-outline" aria-hidden="true"></ion-icon>
+                    </div>
+                    <h3 class="card-title">Phone Number</h3>
+                    <a href="tel:+1234567890" class="card-link">+1 (234) 567-890</a>
+                    <a href="tel:+1234567890" class="card-link">+1 (234) 567-891</a>
+                  </div>
+                </li>
+
+                <li>
+                  <div class="contact-card">
+                    <div class="card-icon">
+                      <ion-icon name="mail-outline" aria-hidden="true"></ion-icon>
+                    </div>
+                    <h3 class="card-title">Email Address</h3>
+                    <a href="mailto:info@Dhvtisu.com" class="card-link">info@Dhvtisu.com</a>
+                    <a href="mailto:support@Dhvtisu.com" class="card-link">support@Dhvtisu.com</a>
+                  </div>
+                </li>
+
+              </ul>
+            </div>
+
+          </div>
+
+        </div>
+      </section>
+
+    </article>
+  </main>
+
+  <!-- 
+    - #FOOTER
+  -->
+
+  <footer class="footer">
+    <!-- Footer content same as previous pages -->
+  </footer>
+
+  <!-- 
+    - #BACK TO TOP
+  -->
+
+  <a href="#top" class="back-top-btn has-after active" aria-label="back to top" data-back-top-btn>
+    <ion-icon name="arrow-up" aria-hidden="true"></ion-icon>
+  </a>
+
+  <!-- 
+    - custom js link
+  -->
+  <script>
+    // Same JavaScript as previous pages
+  </script>
+
+  <!-- 
+    - ionicon link
+  -->
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+</body>
+
+</html>

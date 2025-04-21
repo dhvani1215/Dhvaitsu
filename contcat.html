@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dhvtisu - Contact Us</title>
+
+  <!-- 
+    - favicon
+  -->
+  <link rel="shortcut icon" href="./favicon.svg" type="image/svg+xml">
+
+  <!-- 
+    - custom css link
+  -->
+  <link rel="stylesheet" href="./assets/css/style1.css">
+
+  <!-- 
+    - google font link
+  -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* Contact Form Styles */
+    .contact-section {
+      padding-block: var(--section-padding);
+      background-color: var(--ghost-white);
+    }
+
+    .contact-container {
+      display: grid;
+      gap: 50px;
+    }
+
+    .contact-form-container {
+      background-color: var(--white);
+      padding: 40px;
+      border-radius: var(--radius-20);
+      box-shadow: var(--shadow-1);
+    }
+
+    .contact-info {
+      margin-block-end: 40px;
+    }
+
+    .contact-form .input-wrapper {
+      margin-block-end: 20px;
+    }
+
+    .contact-form .label {
+      color: var(--raisin-black-1);
+      font-size: var(--fs-8);
+      font-weight: var(--fw-500);
+      margin-block-end: 10px;
+    }
+
+    .contact-form .input-field {
+      background-color: var(--ghost-white);
+      color: var(--raisin-black-1);
+      font-size: var(--fs-9);
+      padding: 15px;
+      border-radius: var(--radius-8);
+      outline: none;
+      transition: border-color var(--transition-1);
+    }
+
+    .contact-form .input-field:focus {
+      border: 1px solid var(--majorelle-blue);
+    }
+
+    .contact-form .input-field::placeholder {
+      color: var(--cool-gray);
+    }
+
+    .contact-form textarea.input-field {
+      min-height: 150px;
+      resize: vertical;
+    }
+
+    .contact-form .btn {
+      margin-inline: auto;
+      margin-block-start: 30px;
+    }
+
+    .contact-list {
+      display: grid;
+      gap: 30px;
+    }
+
+    .contact-card {
+      background-color: var(--white);
+      padding: 30px;
+      border-radius: var(--radius-15);
+      box-shadow: var(--shadow-1);
+      transition: var(--transition-2);
+      animation: fadeIn 0.5s ease forwards;
+      opacity: 0;
+      transform: translateY(20px);
+    }
+
+    .contact-card:nth-child(1) {
+      animation-delay: 0.1s;
+    }
+
+    .contact-card:nth-child(2) {
+      animation-delay: 0.2s;
+    }
+
+    .contact-card:nth-child(3) {
+      animation-delay: 0.3s;
+    }
+
+    .contact-card:hover {
+      transform: translateY(-10px);
+      box-shadow: var(--shadow-4);
+    }
+
+    .contact-card .card-icon {
+      background-color: var(--ghost-white);
+      width: 60px;
+      height: 60px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      color: var(--majorelle-blue);
+      font-size: 25px;
+      margin-block-end: 20px;
+      transition: var(--transition-1);
+    }
+
+    .contact-card:hover .card-icon {
+      background-color: var(--majorelle-blue);
+      color: var(--white);
+    }
+
+    .contact-card .card-title {
+      color: var(--raisin-black-1);
+      font-size: var(--fs-6);
+      font-weight: var(--fw-700);
+      margin-block-end: 10px;
+    }
+
+    .contact-card .card-text {
+      color: var(--cool-gray);
+      font-size: var(--fs-8);
+      line-height: 1.6;
+    }
+
+    .contact-card .card-link {
+      color: var(--cool-gray);
+      font-size: var(--fs-8);
+      line-height: 1.6;
+      transition: var(--transition-1);
+    }
+
+    .contact-card .card-link:hover {
+      color: var(--majorelle-blue);
+    }
+
+    /* Animation keyframes */
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes slideIn {
+      from {
+        opacity: 0;
+        transform: translateX(-50px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    .slide-in {
+      animation: slideIn 0.5s ease forwards;
+      opacity: 0;
+    }
+
+    /* Media queries */
+    @media (min-width: 768px) {
+      .contact-container {
+        grid-template-columns: 1fr 1fr;
+        align-items: center;
+      }
+
+      .contact-form-container {
+        padding: 50px;
+      }
+    }
+
+    @media (min-width: 992px) {
+      .contact-container {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .contact-list {
+        grid-template-columns: 1fr 1fr 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body id="top">
+
+  <!-- 
+    - #HEADER
+  -->
+
+  <header class="header" data-header>
+    <div class="container">
+
+      <a href="index2.html" class="logo">Dhvtisu</a>
+
+      <nav class="navbar" data-navbar>
+
+        <div class="wrapper">
+          <a href="index2.html" class="logo">Dhvtisu</a>
+
+          <button class="nav-close-btn" aria-label="close menu" data-nav-toggler>
+            <ion-icon name="close-outline" aria-hidden="true"></ion-icon>
+          </button>
+        </div>
+
+        <ul class="navbar-list">
+
+          <li class="navbar-item">
+            <a href="index2.html" class="navbar-link" data-nav-link>Home</a>
+          </li>
+
+          <li class="navbar-item">
+            <a href="index2.html#service" class="navbar-link" data-nav-link>Services</a>
+          </li>
+
+          <li class="navbar-item">
+            <a href="index2.html#feature" class="navbar-link" data-nav-link>Features</a>
+          </li>
+
+          <li class="navbar-item">
+            <a href="index2.html#project" class="navbar-link" data-nav-link>Portfolio</a>
+          </li>
+
+          <li class="navbar-item">
+            <a href="index2.html#blog" class="navbar-link" data-nav-link>Blog</a>
+          </li>
+
+          <li class="navbar-item">
+            <a href="contact.html" class="navbar-link" data-nav-link>Contact</a>
+          </li>
+
+          <li class="navbar-item">
+            <a href="login.html" class="navbar-link" data-nav-link>Login</a>
+          </li>
+
+          <li class="navbar-item">
+            <a href="signup.html" class="navbar-link" data-nav-link>Sign Up</a>
+          </li>
+
+        </ul>
+
+      </nav>
+
+      <button class="nav-open-btn" aria-label="open menu" data-nav-toggler>
+        <ion-icon name="menu-outline" aria-hidden="true"></ion-icon>
+      </button>
+
+      <a href="contact.html" class="btn btn-primary has-before has-after">Let's Talk 👋</a>
+
+      <div class="overlay" data-nav-toggler data-overlay></div>
+
+    </div>
+  </header>
+
+  <main>
+    <article>
+
+      <!-- 
+        - #CONTACT
+      -->
+
+      <!-- Update your form HTML to include the action and method attributes -->
+<form action="contact-handler.php" method="post" class="contact-form">
+  <div class="input-wrapper">
+    <label for="name" class="label">Full Name</label>
+    <input type="text" name="name" id="name" placeholder="Your full name" required class="input-field">
+  </div>
+
+  <div class="input-wrapper">
+    <label for="email" class="label">Email Address</label>
+    <input type="email" name="email" id="email" placeholder="Your email address" required class="input-field">
+  </div>
+
+  <div class="input-wrapper">
+    <label for="subject" class="label">Subject</label>
+    <input type="text" name="subject" id="subject" placeholder="Subject" required class="input-field">
+  </div>
+
+  <div class="input-wrapper">
+    <label for="message" class="label">Message</label>
+    <textarea name="message" id="message" placeholder="Your message" required class="input-field"></textarea>
+  </div>
+
+  <button type="submit" class="btn btn-primary has-before has-after">
+    <span class="span">Send Message</span>
+  </button>
+</form>
+
+<!-- Add this script tag at the end of your HTML file -->
+<script src="contact-form.js"></script>
+
+
+    </article>
+  </main>
+
+  <!-- 
+    - #FOOTER
+  -->
+
+  <footer class="footer">
+    <div class="container">
+
+      <div class="footer-top section">
+
+        <div class="footer-brand">
+
+          <p class="footer-list-title">About Dhvtisu</p>
+
+          <p class="footer-text">
+            A new way to make the payments easy, reliable and 100% secure. claritatem itamconse quat. Exerci tationulla
+          </p>
+
+          <ul class="social-list">
+
+            <li>
+              <a href="#" class="social-link">
+                <ion-icon name="logo-youtube"></ion-icon>
+              </a>
+            </li>
+
+            <li>
+              <a href="#" class="social-link">
+                <ion-icon name="logo-twitter"></ion-icon>
+              </a>
+            </li>
+
+            <li>
+              <a href="#" class="social-link">
+                <ion-icon name="logo-facebook"></ion-icon>
+              </a>
+            </li>
+
+            <li>
+              <a href="#" class="social-link">
+                <ion-icon name="logo-skype"></ion-icon>
+              </a>
+            </li>
+
+          </ul>
+
+        </div>
+
+        <ul class="footer-list">
+
+          <li>
+            <p class="footer-list-title">Usefull Links</p>
+          </li>
+
+          <li>
+            <a href="contact.html" class="footer-link">Contact us</a>
+          </li>
+
+          <li>
+            <a href="#" class="footer-link">How it Works</a>
+          </li>
+
+          <li>
+            <a href="#" class="footer-link">Create</a>
+          </li>
+
+          <li>
+            <a href="#" class="footer-link">Explore</a>
+          </li>
+
+          <li>
+            <a href="#" class="footer-link">Terms & Services</a>
+          </li>
+
+        </ul>
+
+        <ul class="footer-list">
+
+          <li>
+            <p class="footer-list-title">Community</p>
+          </li>
+
+          <li>
+            <a href="#" class="footer-link">Help Center</a>
+          </li>
+
+          <li>
+            <a href="#" class="footer-link">Partners</a>
+          </li>
+
+          <li>
+            <a href="#" class="footer-link">Suggestions</a>
+          </li>
+
+          <li>
+            <a href="#" class="footer-link">Blog</a>
+          </li>
+
+          <li>
+            <a href="#" class="footer-link">Newsletters</a>
+          </li>
+
+        </ul>
+
+        <ul class="footer-list">
+
+          <li>
+            <p class="footer-list-title">Instagram post</p>
+          </li>
+
+          <li>
+            <ul class="insta-post">
+
+              <li>
+                <div class="insta-card">
+
+                  <figure class="post-banner">
+                    <img src="./assets/images/insta-post-1.jpg" width="77" height="63" loading="lazy"
+                      alt="instagram post" class="img-cover">
+                  </figure>
+
+                  <a href="#" class="card-content">
+                    <ion-icon name="logo-instagram" aria-hidden="true"></ion-icon>
+                  </a>
+
+                </div>
+              </li>
+
+              <li>
+                <div class="insta-card">
+
+                  <figure class="post-banner">
+                    <img src="./assets/images/insta-post-2.jpg" width="77" height="63" loading="lazy"
+                      alt="instagram post" class="img-cover">
+                  </figure>
+
+                  <a href="#" class="card-content">
+                    <ion-icon name="logo-instagram" aria-hidden="true"></ion-icon>
+                  </a>
+
+                </div>
+              </li>
+
+              <li>
+                <div class="insta-card">
+
+                  <figure class="post-banner">
+                    <img src="./assets/images/insta-post-3.jpg" width="77" height="63" loading="lazy"
+                      alt="instagram post" class="img-cover">
+                  </figure>
+
+                  <a href="#" class="card-content">
+                    <ion-icon name="logo-instagram" aria-hidden="true"></ion-icon>
+                  </a>
+
+                </div>
+              </li>
+
+              <li>
+                <div class="insta-card">
+
+                  <figure class="post-banner">
+                    <img src="./assets/images/insta-post-4.jpg" width="77" height="63" loading="lazy"
+                      alt="instagram post" class="img-cover">
+                  </figure>
+
+                  <a href="#" class="card-content">
+                    <ion-icon name="logo-instagram" aria-hidden="true"></ion-icon>
+                  </a>
+
+                </div>
+              </li>
+
+              <li>
+                <div class="insta-card">
+
+                  <figure class="post-banner">
+                    <img src="./assets/images/insta-post-5.jpg" width="77" height="63" loading="lazy"
+                      alt="instagram post" class="img-cover">
+                  </figure>
+
+                  <a href="#" class="card-content">
+                    <ion-icon name="logo-instagram" aria-hidden="true"></ion-icon>
+                  </a>
+
+                </div>
+              </li>
+
+              <li>
+                <div class="insta-card">
+
+                  <figure class="post-banner">
+                    <img src="./assets/images/insta-post-6.jpg" width="77" height="63" loading="lazy"
+                      alt="instagram post" class="img-cover">
+                  </figure>
+
+                  <a href="#" class="card-content">
+                    <ion-icon name="logo-instagram" aria-hidden="true"></ion-icon>
+                  </a>
+
+                </div>
+              </li>
+
+            </ul>
+          </li>
+
+        </ul>
+
+      </div>
+
+      <div class="footer-bottom">
+
+        <p class="copyright">
+          &copy; 2022 Dhvtisu. All Rights Reserved by Dhvtisu
+        </p>
+
+        <ul class="footer-bottom-list">
+
+          <li>
+            <a href="#" class="footer-bottom-link">Terms and conditions</a>
+          </li>
+
+          <li>
+            <a href="#" class="footer-bottom-link">Privacy policy</a>
+          </li>
+
+          <li>
+            <a href="login.html" class="footer-bottom-link">Login / Signup</a>
+          </li>
+
+        </ul>
+
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- 
+    - #BACK TO TOP
+  -->
+
+  <a href="#top" class="back-top-btn has-after active" aria-label="back to top" data-back-top-btn>
+    <ion-icon name="arrow-up" aria-hidden="true"></ion-icon>
+  </a>
+
+  <!-- 
+    - custom js link
+  -->
+  <script src="./assets/js/script.js" defer></script>
+
+  <!-- 
+    - ionicon link
+  -->
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+  <script>
+    // Animation for elements with slide-in class
+    document.addEventListener('DOMContentLoaded', function() {
+      const slideElements = document.querySelectorAll('.slide-in');
+      
+      slideElements.forEach(element => {
+        setTimeout(() => {
+          element.style.opacity = '1';
+          element.style.transform = 'translateX(0)';
+        }, element.style.animationDelay ? parseFloat(element.style.animationDelay) * 1000 : 0);
+      });
+
+      // Form submission animation
+      const contactForm = document.querySelector('.contact-form');
+      
+      if (contactForm) {
+        contactForm.addEventListener('submit', function(e) {
+          e.preventDefault();
+          
+          const formElements = contactForm.querySelectorAll('input, textarea, button');
+          
+          formElements.forEach(element => {
+            element.style.transition = 'all 0.3s ease';
+            element.style.opacity = '0.5';
+            element.disabled = true;
+          });
+          
+          setTimeout(() => {
+            const successMessage = document.createElement('div');
+            successMessage.textContent = 'Your message has been sent successfully!';
+            successMessage.style.color = 'var(--majorelle-blue)';
+            successMessage.style.fontWeight = 'var(--fw-500)';
+            successMessage.style.textAlign = 'center';
+            successMessage.style.padding = '20px';
+            successMessage.style.opacity = '0';
+            successMessage.style.transform = 'translateY(20px)';
+            successMessage.style.transition = 'all 0.5s ease';
+            
+            contactForm.appendChild(successMessage);
+            
+            setTimeout(() => {
+              successMessage.style.opacity = '1';
+              successMessage.style.transform = 'translateY(0)';
+            }, 100);
+            
+            setTimeout(() => {
+              formElements.forEach(element => {
+                element.style.opacity = '1';
+                element.disabled = false;
+                if (element.tagName.toLowerCase() !== 'button') {
+                  element.value = '';
+                }
+              });
+              
+              successMessage.style.opacity = '0';
+              successMessage.style.transform = 'translateY(-20px)';
+              
+              setTimeout(() => {
+                successMessage.remove();
+              }, 500);
+            }, 3000);
+          }, 1000);
+        });
+      }
+    });
+  </script>
+</body>
+
+</html>
